@@ -6,14 +6,17 @@ import com.exam.Repository.RoleRepository;
 import com.exam.Repository.UserRepository;
 import com.exam.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
+
+//    Creating  User
     @Override
     public User createUser(User user, Set<UserRole> userRoles) throws Exception {
 
@@ -22,7 +25,15 @@ public class UserServiceImpl implements UserService {
             System.out.println("Username is taken");
             throw new Exception("Username already present");
         }
+        else {
+            for(UserRole ur:userRoles){
+                roleRepository.save(ur.getRole());
+            }
 
-        return null;
+            user.getUserRoles().addAll(userRoles);
+            local = this.userRepository.save(user);
+        }
+
+        return local;
     }
 }

@@ -29,8 +29,7 @@ public class User {
     }
 
 //    Parameterized Constructor
-    public User(Long userId, String userName, String password, String firstName, String lastName, String email, String phone, boolean enabled, String profilePhoto) {
-        this.userId = userId;
+    public User(String userName, String password, String firstName, String lastName, String email, String phone, boolean enabled, String profilePhoto) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;

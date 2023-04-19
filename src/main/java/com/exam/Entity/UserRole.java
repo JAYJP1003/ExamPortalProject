@@ -15,8 +15,7 @@ public class UserRole {
     public UserRole() {
     }
 
-    public UserRole(Long userRoleId, User user, Role role) {
-        this.userRoleId = userRoleId;
+    public UserRole( User user, Role role) {
         this.user = user;
         this.role = role;
     }
